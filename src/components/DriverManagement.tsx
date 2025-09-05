@@ -219,30 +219,6 @@ const DriverManagement: React.FC<DriverManagementProps> = ({
     setEditingDriver(null);
   };
 
-  const openEditModal = (driver: Driver) => {
-    setEditingDriver(driver);
-    setFormData({
-      name: driver.name,
-      phone: driver.phone,
-      vehicleType: driver.vehicleType,
-      licensePlate: driver.licensePlate,
-      currentLocation: driver.currentLocation || { lat: 33.7890, lng: -7.1600 }
-    });
-    setShowEditModal(true);
-  };
-
-  const handleDelete = (driverId: string) => {
-    const driver = drivers.find(d => d.id === driverId);
-    if (driver && !driver.isAvailable) {
-      toast.error('Impossible de supprimer un chauffeur en mission');
-      return;
-    }
-    
-    if (window.confirm(`Êtes-vous sûr de vouloir supprimer le chauffeur ${driver?.name} ?`)) {
-      onDeleteDriver(driverId);
-    }
-  };
-
   return (
     <Container>
       <Header>

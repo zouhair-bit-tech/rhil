@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -8,7 +8,6 @@ import DynamicMap from '../components/DynamicMap';
 
 // Configuration de la carte centrée sur le Maroc
 const MAP_CENTER: [number, number] = [31.7917, -7.0926]; // Centre du Maroc
-const BOUZNIKA_COORDS: [number, number] = [33.7890, -7.1600]; // Coordonnées de Bouznika
 
 const BookingContainer = styled.div`
   padding: 2rem;
@@ -300,12 +299,6 @@ const BookingPage: React.FC<{ onAddMission: (mission: Omit<Mission, 'id' | 'stat
     try {
       // Simuler l'envoi de la commande
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const bookingData: BookingFormType = {
-        ...data,
-        pickup,
-        destination
-      };
       
       // Générer le numéro de commande
       const newCommandNumber = generateCommandNumber();

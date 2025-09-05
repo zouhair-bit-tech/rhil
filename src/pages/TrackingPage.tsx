@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { toast } from 'react-hot-toast';
-import { Trip, Location } from '../types';
+import { Trip } from '../types';
 import TrackingMap from '../components/TrackingMap';
 
 const TrackingContainer = styled.div`

@@ -618,7 +618,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ missions: initialMissions, driver
   const [missions, setMissions] = useState<Mission[]>(initialMissions);
   const [drivers, setDrivers] = useState<Driver[]>(initialDrivers);
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
-  const [selectedDriver, setSelectedDriver] = useState<Driver | null>(null);
+  const [, setSelectedDriver] = useState<Driver | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [showAddDriverModal, setShowAddDriverModal] = useState(false);
@@ -692,13 +692,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ missions: initialMissions, driver
     toast.success(`Contact établi avec ${mission.customerName} (${mission.customerPhone})`);
   };
 
-  const addNote = (missionId: string, note: string) => {
-    setMissions(missions.map(m => 
-      m.id === missionId ? { ...m, notes: note } : m
-    ));
-    toast.success('Note ajoutée à la mission');
-  };
-
   // Driver management functions
   const addDriver = (driverData: Omit<Driver, 'id'>) => {
     const newDriver: Driver = {
@@ -733,12 +726,6 @@ const AdminPage: React.FC<AdminPageProps> = ({ missions: initialMissions, driver
       setDrivers(drivers.filter(d => d.id !== driverId));
       toast.success('Chauffeur supprimé avec succès');
     }
-  };
-
-  const updateDriverLocation = (driverId: string, lat: number, lng: number) => {
-    setDrivers(drivers.map(d => 
-      d.id === driverId ? { ...d, currentLocation: { lat, lng } } : d
-    ));
   };
 
   // Check if user is authenticated

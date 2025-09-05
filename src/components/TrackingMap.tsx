@@ -11,7 +11,7 @@ import { Point, LineString } from 'ol/geom';
 import { Feature } from 'ol';
 import { Style, Text, Fill, Stroke, Circle } from 'ol/style';
 import { toast } from 'react-hot-toast';
-import { Location, Trip } from '../types';
+import { Trip } from '../types';
 
 interface TrackingMapProps {
   trip?: Trip;
@@ -186,7 +186,7 @@ const TrackingMap: React.FC<TrackingMapProps> = ({
         mapInstance.current.setTarget(undefined);
       }
     };
-  }, []);
+  }, [center, zoom]);
 
   // Update map when trip changes
   useEffect(() => {
