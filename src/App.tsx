@@ -88,7 +88,7 @@ const mockDrivers: Driver[] = [
 
 function App() {
   const [missions, setMissions] = useState<Mission[]>(mockMissions);
-  const [drivers, setDrivers] = useState<Driver[]>(mockDrivers);
+  const [drivers] = useState<Driver[]>(mockDrivers);
 
   const addMission = (newMission: Omit<Mission, 'id' | 'status' | 'createdAt'>) => {
     const mission: Mission = {
@@ -98,7 +98,7 @@ function App() {
       status: 'pending',
       createdAt: new Date(),
     };
-    setMissions(prevMissions => [mission, ...prevMissions]);
+    setMissions((prevMissions: Mission[]) => [mission, ...prevMissions]);
   };
 
   return (
